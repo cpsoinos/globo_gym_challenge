@@ -4,3 +4,20 @@
 # Example:
 #
 #   Person.create(first_name: 'Eric', last_name: 'Kelly')
+
+125.times do
+  User.find_or_create_by!(name: Faker::Name.name,
+    address: (Faker::Address.street_address + ', ' +
+    Faker::Address.city + ', ' + Faker::Address.state_abbr + ' ' +
+    Faker::Address.zip), email: Faker::Internet.email,
+    phone: Faker::PhoneNumber.cell_phone,
+    credit_card: Faker::Business.credit_card_number,
+    locations_id: rand(1..21))
+end
+
+20.times do
+  Location.find_or_create_by!(name: Faker::App.name,
+    address: Faker::Address.street_address + ', ' +
+    Faker::Address.city + ', ' + Faker::Address.state_abbr + ' ' +
+    Faker::Address.zip)
+end

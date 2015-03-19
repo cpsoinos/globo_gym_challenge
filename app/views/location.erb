@@ -1,0 +1,10 @@
+<h1><%= location.name %></h1>
+
+<p><%= location.address %></p>
+
+<h3>Members at this location:</h3>
+<ul>
+  <% members.each do |member| %>
+    <li><a href="/members/<%= member.id %>"><%= member.name %></a></li>
+  <% end %>
+</ul>

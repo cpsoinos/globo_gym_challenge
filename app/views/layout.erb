@@ -3,12 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello World</title>
+    <title>Globo Gym</title>
+    <link rel="stylesheet" href="/stylesheets/normalize.css" />
+    <link rel="stylesheet" href="/stylesheets/foundation.min.css" />
     <link rel="stylesheet" href="/stylesheets/app.css" />
   </head>
   <body>
-    <%= yield %>
-
+    <div class="row">
+      <%= yield %>
+    </div>
     <script src="/javascripts/app.js"></script>
   </body>
 </html>
