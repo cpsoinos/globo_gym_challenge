@@ -43,7 +43,6 @@ get '/' do
 end
 
 post '/login' do
-  binding.pry
   user = User.find_by(user_name: params[:username])
 
   if user.exist?
@@ -59,8 +58,14 @@ get '/home' do
 end
 
 get '/location/:location_id' do |id|
+  # you can just use find instead of find_by
+  # find will default look for id, find_by is used
+  # if you want to find by something else
   location = Location.find_by(id: id)
-  members = User.where(locations_id: id)
+
+  # you should leverage the associations by doing
+  # location.members
+  members = location.members
 
   erb :location, locals: { location: location,
                            members: members

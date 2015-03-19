@@ -2,8 +2,7 @@ require 'spec_helper'
 
 feature "User views the index page" do
   scenario "user sees the correct title" do
-    visit '/'
+    membership = FactoryGirl.create(:users_location)
 
-    expect(page).to have_content "Hello World"
   end
 end

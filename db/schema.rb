@@ -16,17 +16,17 @@ ActiveRecord::Schema.define(version: 20150319124635) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "locations", force: true do |t|
+  create_table "locations", force: :cascade do |t|
     t.string "name",    null: false
     t.string "address", null: false
   end
 
-  create_table "memberships", force: true do |t|
+  create_table "memberships", force: :cascade do |t|
     t.string "user_id",     null: false
     t.string "location_id", null: false
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string  "name",                         null: false
     t.string  "address",                      null: false
     t.string  "email",                        null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20150319124635) do
     t.string  "password"
   end
 
-  create_table "users_locations", force: true do |t|
+  create_table "users_locations", force: :cascade do |t|
     t.integer "user_id",     null: false
     t.integer "location_id", null: false
   end
