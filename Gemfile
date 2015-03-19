@@ -5,6 +5,8 @@ gem 'rake'
 gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'sinatra-contrib'
+gem 'sinatra-flash'
+gem 'dotenv'
 
 group :test, :development do
   gem 'capybara'

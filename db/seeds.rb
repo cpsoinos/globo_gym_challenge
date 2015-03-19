@@ -12,7 +12,8 @@
     Faker::Address.zip), email: Faker::Internet.email,
     phone: Faker::PhoneNumber.cell_phone,
     credit_card: Faker::Business.credit_card_number,
-    locations_id: rand(1..21))
+    locations_id: rand(1..21), username: Faker::Internet.user_name,
+    password: Faker::Internet.password)
 end
 
 20.times do
@@ -21,3 +22,4 @@ end
     Faker::Address.city + ', ' + Faker::Address.state_abbr + ' ' +
     Faker::Address.zip)
 end
+

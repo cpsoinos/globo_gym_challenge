@@ -1,3 +1,26 @@
 body {
-  background-image: url(https://pbs.twimg.com/profile_images/378800000860517018/J8dtRGyx.jpeg);
+  background-color: #AD007B;
+}
+
+img {
+  width: 50%;
+  height: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+}
+
+.landing {
+  text-align: center;
+}
+
+#login {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.or {
+  margin-top: 2em;
 }

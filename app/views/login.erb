@@ -1,0 +1,27 @@
+<h1 class="landing">Welcome to Globo Gym</h1>
+
+<h3 class="landing">Where we're better than you, and we know it.</h3>
+
+<img src="https://pbs.twimg.com/profile_images/378800000860517018/J8dtRGyx.jpeg">
+
+<form action="/login" method="post">
+  <input type="text" name="username" placeholder="Username">
+  <input type="text", name="password", placeholder="Password">
+  <input type="submit" value="Login">
+</form>
+
+<p>or</p>
+
+<form action="/signup" method="post">
+  <input type="text" name="name" placeholder="Name">
+  <input type="text" name="address" placeholder="Address">
+  <input type="text" name="phone" placeholder="Phone Number">
+  <input type="text" name="credit_card" placeholder="Credit Card Number">
+  <p>Desired location:
+    <select>
+      <% locations.each do |location| %>
+        <option value="<%= location.id %>"><%= location.name %></option>
+      <% end %>
+  </select>
+  <input type="submit" value="Sign Up">
+</form>

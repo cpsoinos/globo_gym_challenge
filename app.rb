@@ -1,11 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/reloader'
+require 'sinatra/flash'
 
-configure :development, :test do
-  require 'pry'
-  require 'faker'
-end
+require_relative 'config/application'
 
 configure do
   set :views, 'app/views'
@@ -16,7 +14,44 @@ Dir[File.join(File.dirname(__FILE__), 'app', '**', '*.rb')].each do |file|
   also_reload file
 end
 
+helpers do
+  def current_user
+    user_id = session[:user_id]
+    @current_user ||= User.find(user_id) if user_id.present?
+  end
+
+  def signed_in?
+    current_user.present?
+  end
+end
+
+def set_current_user(user)
+  session[:user_id] = user.id
+end
+
+def authenticate!
+  unless signed_in?
+    flash[:notice] = 'You need to sign in if you want to do that!'
+    redirect '/'
+  end
+end
+
 get '/' do
+  locations = Location.all
+
+  erb :login, locals: { locations: locations }
+end
+
+post '/login' do
+  binding.pry
+  user = User.find_by(user_name: params[:username])
+
+  if user.exist?
+    redirect '/home'
+  end
+end
+
+get '/home' do
   @title = "Globo Gym"
   locations = Location.all
 
