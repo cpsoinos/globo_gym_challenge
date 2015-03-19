@@ -43,11 +43,34 @@ get '/' do
 end
 
 post '/login' do
-  binding.pry
-  user = User.find_by(user_name: params[:username])
+  user = User.find_by(email: params[:email])
 
-  if user.exist?
+  if !user.nil?
+    flash[:notice] = "Welcome back!"
+    session[:user] = User.find_by(email: params[:email])
     redirect '/home'
+  else
+    flash[:notice] = "Invalid email or password."
+    redirect '/'
+  end
+end
+
+post '/signup' do
+  user = User.new(
+    name: params[:name], address: params[:address],
+    email: params[:email], phone: params[:phone],
+    credit_card: params[:credit_card],
+    locations_id: params[:locations].to_i,
+    password: params[:password]
+    )
+
+  if user.save
+    flash[:notice] = "You have successfully signed up! Welcome to Globo Gym."
+    session[:user] = User.find_by(email: params[:email])
+    redirect '/home'
+  else
+    flash[:notice] = "Oops! Something went wrong. Try again."
+    redirect '/'
   end
 end
 

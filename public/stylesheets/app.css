@@ -21,6 +21,7 @@ img {
   margin-right: auto;
 }
 
-.or {
-  margin-top: 2em;
+.flash {
+  background-color: #0BA5D0;
+  text-align: center;
 }
